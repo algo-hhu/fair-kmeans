@@ -3,9 +3,21 @@
 [![Supported Python version](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/release/python-390/)
 [![Stable Version](https://img.shields.io/pypi/v/fair-kmeans?label=stable)](https://pypi.org/project/fair-kmeans/)
 
-# Fair K-Means++
+# Fair K-Means
+
+Fair K-Means produces a fair clustering assignment according to the fairness definition of Chierichetti et al. [1]. Each point has a binary color assigned to it. The goal is to assign the points to clusters such that the number of points with different colors in each cluster is the same. The algorithm also works with weights, so each point can participate with a different weight in the coloring. 
+
+The algorithm works as follows, assuming that the binary colors are red and blue:
+1. A matching between the red and blue points is computed such that the cost (the point distances) of the matching is minimized.
+2. The mean of each matched pair is computed.
+3. A K-Means++ clustering of all the means is computed, and the point pairs are assigned to the clusters of their means.
 
 
+### References
+
+[1] Flavio Chierichetti, Ravi Kumar, Silvio Lattanzi, and Sergei Vassilvitskii, Fair clus-
+tering through fairlets, Proceedings of the 30th Annual Conference on Neural Infor-
+mation Processing Systems (NIPS), 2017, pp. 5036–5044.
 
 ## Installation
 
@@ -36,6 +48,32 @@ centers = km.cluster_centers_
 
 print(labels) # [1, 0, 0, 1, 0, 0]
 print(centers) # [[1.65, 1.65, 1.65], [1.5, 1.5, 1.5]]
+```
+
+## Example with Weights
+
+```python
+from fair_kmeans import FairKMeans
+
+example_data = [
+    [1.0, 1.0, 1.0],
+    [1.1, 1.1, 1.1],
+    [1.2, 1.2, 1.2],
+    [2.0, 2.0, 2.0],
+    [2.1, 2.1, 2.1],
+    [2.2, 2.2, 2.2],
+]
+
+example_colors = [1, 1, 1, 0, 0, 0]
+example_weights = [2, 2, 1, 1, 1, 3]
+
+km = FairKMeans(n_clusters=2, random_state=0)
+km.fit(example_data, color=example_colors, sample_weight=example_weights)
+labels = km.labels_
+centers = km.cluster_centers_
+
+print(labels) # [1, 1, 0, 1, 1, 0]
+print(centers) # [[0.85, 0.85, 0.85], [1.28, 1.28, 1.28]]
 ```
 
 ## Development
