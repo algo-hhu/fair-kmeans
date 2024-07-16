@@ -16,9 +16,7 @@ The matching between the red and blue points is computed using the [Lemon C++ Li
 
 ### References
 
-[1] Flavio Chierichetti, Ravi Kumar, Silvio Lattanzi, and Sergei Vassilvitskii, Fair clus-
-tering through fairlets, Proceedings of the 30th Annual Conference on Neural Infor-
-mation Processing Systems (NIPS), 2017, pp. 5036–5044.
+[1] Flavio Chierichetti, Ravi Kumar, Silvio Lattanzi, and Sergei Vassilvitskii, Fair clustering through fairlets, Proceedings of the 30th Annual Conference on Neural Information Processing Systems (NIPS), 2017, pp. 5036–5044.
 
 ## Installation
 
