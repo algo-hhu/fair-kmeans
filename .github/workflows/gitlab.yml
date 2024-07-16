@@ -30,6 +30,6 @@ jobs:
         ref: 'main'
         variables: |
           {
-            "PROJECT": "fair_kmeans",
+            "PROJECT": "fair-kmeans",
             "GIT_HASH": "${{ github.event.pull_request.head.sha || github.sha }}"
           }
