@@ -99,7 +99,8 @@ class FairKMeans(KMeans):
     ) -> np.ndarray:
         if color is None:
             raise ValueError(
-                "Please provide a list of array of colors (at most two colors) for each point."
+                "Please provide a list or array of colors for each point. "
+                "In total, at most two colors are allowed."
             )
 
         if len(color) != len(X):
