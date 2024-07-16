@@ -5,13 +5,14 @@
 
 # Fair K-Means
 
-Fair K-Means produces a fair clustering assignment according to the fairness definition of Chierichetti et al. [1]. Each point has a binary color assigned to it. The goal is to assign the points to clusters such that the number of points with different colors in each cluster is the same. The algorithm also works with weights, so each point can participate with a different weight in the coloring. 
+Fair K-Means produces a fair clustering assignment according to the fairness definition of Chierichetti et al. [1]. Each point has a binary color assigned to it. The goal is to assign the points to clusters such that the number of points with different colors in each cluster is the same. The algorithm also works with weights, so each point can participate with a different weight in the coloring.
 
 The algorithm works as follows, assuming that the binary colors are red and blue:
 1. A matching between the red and blue points is computed such that the cost (the point distances) of the matching is minimized.
 2. The mean of each matched pair is computed.
 3. A K-Means++ clustering of all the means is computed, and the point pairs are assigned to the clusters of their means.
 
+The matching between the red and blue points is computed using the [Lemon C++ Library](https://lemon.cs.elte.hu/trac/lemon). The library is included in the package and does not need to be installed separately. Only the needed files were included, and a complete version of the library can be found [here](https://lemon.cs.elte.hu/trac/lemon). A copyright notice is included [here](fair_kmeans/lemon/LICENSE).
 
 ### References
 
