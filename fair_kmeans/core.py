@@ -80,7 +80,7 @@ class FairKMeans(KMeans):
             "we do not know if it will cause the same problems."
         )
 
-    def _check_X(self, X: Sequence[Sequence[float]]) -> np.ndarray:
+    def _check_X(self, X: Sequence[Sequence[float]]) -> Any:
         _X = self._validate_data(
             X,
             accept_sparse="csr",
