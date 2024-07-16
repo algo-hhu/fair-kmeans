@@ -4,12 +4,12 @@ on:
       branches:
         - main
       paths:
-        - "bico/**"
+        - "fair_kmeans/**"
         - "tests/**"
         - "poetry.lock"
     pull_request:
       paths:
-        - "bico/**"
+        - "fair_kmeans/**"
         - "tests/**"
         - "poetry.lock"
     # Allows you to run this workflow manually from the Actions tab
@@ -30,6 +30,6 @@ jobs:
         ref: 'main'
         variables: |
           {
-            "PROJECT": "bico",
+            "PROJECT": "fair_kmeans",
             "GIT_HASH": "${{ github.event.pull_request.head.sha || github.sha }}"
           }
