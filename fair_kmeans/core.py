@@ -116,7 +116,7 @@ class FairKMeans(KMeans):
 
     def _check_sample_weight_constraints(
         self, X: Sequence[Sequence[float]], sample_weight: Optional[Sequence[float]]
-    ) -> np.ndarray:
+    ) -> Any:
         # For now, we only accept integers, because the code was
         # only tested with integer weights
         if sample_weight is not None and (
@@ -268,7 +268,7 @@ class FairKMeans(KMeans):
         y: Any = None,
         sample_weight: Optional[Sequence[float]] = None,
         color: Optional[Sequence[int]] = None,
-    ) -> np.ndarray:
+    ) -> Any:
 
         self.fit(X=X, y=y, sample_weight=sample_weight, color=color)
 
