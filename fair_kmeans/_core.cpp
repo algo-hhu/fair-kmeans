@@ -6,6 +6,8 @@
 
 typedef unsigned int uint;
 
+
+
 bool checkWeightValidity(std::vector<int> &weightsum)
 {
     int first_sum = weightsum[0];
