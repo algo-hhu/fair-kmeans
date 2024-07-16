@@ -119,12 +119,8 @@ class FairKMeans(KMeans):
     ) -> Any:
         # For now, we only accept integers, because the code was
         # only tested with integer weights
-        if sample_weight is not None and (
-            (
-                isinstance(sample_weight, np.ndarray)
-                and sample_weight.dtype in [float, np.float32, np.float64]
-            )
-            or any(isinstance(w, float) for w in sample_weight)
+        if sample_weight is not None and any(
+            isinstance(w, float) for w in sample_weight
         ):
             raise NotImplementedError(
                 "For now, FairKMeans only supports integer weights greater than 1."
