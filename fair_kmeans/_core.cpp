@@ -111,7 +111,7 @@ extern "C"
                uint nc,
                uint maxIterations,
                double tolerance,
-               std::uint64_t seed,
+               int seed,
                int *labels,
                double *centers,
                bool updateCenters,
