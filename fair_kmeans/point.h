@@ -3,6 +3,8 @@
 #include <vector>
 #include <cstddef>
 
+typedef unsigned int uint;
+
 // Small class for storing weighted points
 class Point
 {

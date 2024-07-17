@@ -6,8 +6,6 @@
 
 #include "point.h"
 
-typedef unsigned int uint;
-
 // print a point
 std::string Point::print() const
 {
