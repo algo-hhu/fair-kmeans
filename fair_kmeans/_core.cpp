@@ -36,7 +36,7 @@ void postprocessData(double *array, double *sampleWeights, int *colors, uint n, 
         double w = sampleWeights[j];
         int c = colors[j];
         number[c] += 1;
-        weightsum[c] += w;
+        weightsum[c] += static_cast<int>(w);
         std::vector<double> coords(&array[i], &array[i] + d);
         // Add j as the position of the point in the array
         points[c].push_back(Point(w, c, j, coords));
