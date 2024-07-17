@@ -35,7 +35,7 @@ void postprocessData(double *array, double *sampleWeights, int *colors, uint n, 
     {
         // In a future version, we might consider using weights as doubles
         // but currently the algorithm does not allow for that
-        double w = static_cast<int>(sampleWeights[j]);
+        int w = static_cast<int>(sampleWeights[j]);
         int c = colors[j];
         number[c] += 1;
         weightsum[c] += w;
