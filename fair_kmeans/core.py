@@ -116,7 +116,7 @@ class FairKMeans(KMeans):
         return np.array(color, dtype=np.int32, order="C", copy=False)
 
     def _check_sample_weight_constraints(
-        self, X: Sequence[Sequence[float]], sample_weight: Optional[Sequence[float]]
+        self, X: Sequence[Sequence[float]], sample_weight: Optional[Sequence[int]]
     ) -> Any:
         # For now, we only accept integers, because the code was
         # only tested with integer weights
@@ -206,7 +206,7 @@ class FairKMeans(KMeans):
         self,
         X: Sequence[Sequence[float]],
         y: Any = None,
-        sample_weight: Optional[Sequence[float]] = None,
+        sample_weight: Optional[Sequence[int]] = None,
         color: Optional[Sequence[int]] = None,
         fast: bool = False,
     ) -> "FairKMeans":
@@ -254,7 +254,7 @@ class FairKMeans(KMeans):
         self,
         X: Sequence[Sequence[float]],
         y: Any = None,
-        sample_weight: Optional[Sequence[float]] = None,
+        sample_weight: Optional[Sequence[int]] = None,
         color: Optional[Sequence[int]] = None,
     ) -> np.ndarray:
         return self.fit(X=X, y=y, sample_weight=sample_weight, color=color).labels_
@@ -263,7 +263,7 @@ class FairKMeans(KMeans):
         self,
         X: Sequence[Sequence[float]],
         y: Any = None,
-        sample_weight: Optional[Sequence[float]] = None,
+        sample_weight: Optional[Sequence[int]] = None,
         color: Optional[Sequence[int]] = None,
     ) -> Any:
 
@@ -275,7 +275,7 @@ class FairKMeans(KMeans):
         self,
         X: Sequence[Sequence[float]],
         y: Any = None,
-        sample_weight: Optional[Sequence[float]] = None,
+        sample_weight: Optional[Sequence[int]] = None,
         color: Optional[Sequence[int]] = None,
     ) -> np.ndarray:
         check_is_fitted(self)
@@ -294,7 +294,7 @@ class FairKMeans(KMeans):
         self,
         X: Sequence[Sequence[float]],
         y: Any = None,
-        sample_weight: Optional[Sequence[float]] = None,
+        sample_weight: Optional[Sequence[int]] = None,
         color: Optional[Sequence[int]] = None,
     ) -> float:
         check_is_fitted(self)
