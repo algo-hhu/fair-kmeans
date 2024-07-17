@@ -148,7 +148,7 @@ class FairKMeans(KMeans):
         c_k = ctypes.c_uint(self.n_clusters)
         c_n_colors = ctypes.c_uint(self.n_colors_)
 
-        c_random_state = ctypes.c_size_t(self._seed)
+        c_random_state = ctypes.c_int(self._seed)
 
         c_labels = (ctypes.c_int * n_samples)()
         c_centers = self.cluster_centers_.ctypes.data_as(

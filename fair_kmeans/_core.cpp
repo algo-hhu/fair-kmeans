@@ -33,7 +33,9 @@ void postprocessData(double *array, double *sampleWeights, int *colors, uint n, 
     int j = 0;
     for (uint i = 0; i < n * d; i += d)
     {
-        double w = sampleWeights[j];
+        // In a future version, we might consider using weights as doubles
+        // but currently the algorithm does not allow for that
+        int w = static_cast<int>(sampleWeights[j]);
         int c = colors[j];
         number[c] += 1;
         weightsum[c] += w;
@@ -109,7 +111,7 @@ extern "C"
                uint nc,
                uint maxIterations,
                double tolerance,
-               std::uint64_t seed,
+               int seed,
                int *labels,
                double *centers,
                bool updateCenters,
