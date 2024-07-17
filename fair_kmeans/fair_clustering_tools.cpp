@@ -169,6 +169,12 @@ std::vector<Point> computeFairlets(const std::vector<std::vector<Point>> &colore
   return fairlets;
 }
 
+int randomDoubleToInt(double value, int min, int max)
+{
+  double result = (value * (max - min)) + min;
+  return static_cast<int>(std::ceil(result));
+}
+
 // Computes the fair assignment of points to a given set of centers. Returns new centroids.
 CentersValueChange compute_fair_assignment(
     std::vector<std::vector<Point>> &points,
@@ -336,18 +342,22 @@ CentersValueChange compute_fair_assignment(
   int centerindex = 0;
 
   std::mt19937 rng(seed); // random-number engine used (Mersenne-Twister in this case)
-  std::uniform_int_distribution<int> uni(0, points[0].size() - 1); // guaranteed unbiased
+  // Replaced this because it does not produce the same results on different platforms
+  //std::uniform_int_distribution<int> uni(0, points[0].size() - 1); // guaranteed unbiased
+  std::uniform_real_distribution<double> realDist(0.0, 1.0);
+
+  # define getRandomValue() randomDoubleToInt(realDist(rng), 0, points[0].size() - 1)
 
   // Choose k - 1 random integers between 0 and the size of the blue points
   // Such that we can use them in case our clusters are empty
   std::vector<Matching> matchingPairs(centers.size() - 1);
 
-  for (size_t i = 0; i < centers.size() - 1; ++i)
+  for (size_t i = 0; i < matchingPairs.size(); ++i)
   {
-    auto randomInteger = uni(rng);
+    auto randomInteger = getRandomValue();
     while (std::find_if(matchingPairs.begin(), matchingPairs.end(), find_id(randomInteger)) != matchingPairs.end())
     {
-      randomInteger = uni(rng);
+      randomInteger = getRandomValue();
     }
     matchingPairs[i].source = randomInteger;
   }
