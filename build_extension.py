@@ -25,6 +25,7 @@ class BuildExt(build_ext):
         # with clang++. This works across compilers (ignored by MSVC).
         for extension in self.extensions:
             extension.extra_compile_args.append("-std=c++11")
+            extension.extra_compile_args.append("-DLEMON_ONLY_TEMPLATES")
 
         try:
             build_ext.build_extensions(self)
@@ -34,6 +35,7 @@ class BuildExt(build_ext):
             # so the code can compile on macOS with Anaconda.
             for extension in self.extensions:
                 extension.extra_compile_args.append("-stdlib=libc++")
+                extension.extra_compile_args.append("-DLEMON_ONLY_TEMPLATES")
                 extension.extra_link_args.append("-stdlib=libc++")
             build_ext.build_extensions(self)
 
