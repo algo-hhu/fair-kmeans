@@ -33,10 +33,12 @@ void postprocessData(double *array, double *sampleWeights, int *colors, uint n, 
     int j = 0;
     for (uint i = 0; i < n * d; i += d)
     {
-        double w = sampleWeights[j];
+        // In a future version, we might consider using weights as doubles
+        // but currently the algorithm does not allow for that
+        double w = static_cast<int>(sampleWeights[j]);
         int c = colors[j];
         number[c] += 1;
-        weightsum[c] += static_cast<int>(w);
+        weightsum[c] += w;
         std::vector<double> coords(&array[i], &array[i] + d);
         // Add j as the position of the point in the array
         points[c].push_back(Point(w, c, j, coords));
