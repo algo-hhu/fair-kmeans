@@ -108,10 +108,14 @@ class FairKMeans(KMeans):
                 "Length of colors array should be equal to the number of samples in X."
             )
 
-        self.n_colors_ = len(np.unique(color))
+        un = np.unique(color)
+        self.n_colors_ = len(un)
 
-        if self.n_colors_ > 2:
-            raise NotImplementedError("For now, FairKMeans only supports two colors.")
+        if not (self.n_colors_ == 2 and un[0] == 0 and un[1] == 1):
+            raise NotImplementedError(
+                "For now, FairKMeans only supports two colors. "
+                "That means that in the colors array only zeros and ones are allowed."
+            )
 
         return np.array(color, dtype=np.int32, order="C", copy=False)
 
@@ -121,7 +125,7 @@ class FairKMeans(KMeans):
         # For now, we only accept integers, because the code was
         # only tested with integer weights
         if sample_weight is not None and any(
-            isinstance(w, float) for w in sample_weight
+            isinstance(w, float) or w < 1 for w in sample_weight
         ):
             raise NotImplementedError(
                 "For now, FairKMeans only supports integer weights greater than 1."
