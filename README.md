@@ -110,11 +110,8 @@ poetry run python -m unittest discover tests -v
 
 ## Citation
 
-If you use this code, please cite [the following paper](https://arxiv.org/abs/2406.02739v1):
+If you use this code, please cite [the following paper](https://doi.org/10.1007/978-3-030-39479-0_16):
 
 ```
-Melanie Schmidt, Chris Schwiegelshohn and Christian Sohler.
-"Fair Coresets and Streaming Algorithms for Fair k-Means Clustering" (2020).
-Approximation and Online Algorithms. WAOA 2019.
-Lecture Notes in Computer Science, vol 11926. Springer.
+M. Schmidt, C. Schwiegelshohn, and C. Sohler, "Fair Coresets and Streaming Algorithms for Fair k-means," in Lecture notes in computer science, 2020, pp. 232–251. doi: 10.1007/978-3-030-39479-0_16.
 ```
