@@ -14,6 +14,8 @@ The algorithm works as follows, assuming that the binary colors are red and blue
 
 The matching between the red and blue points is computed using the [Lemon C++ Library](https://lemon.cs.elte.hu/trac/lemon). The library is included in the package and does not need to be installed separately. Only the needed files were included, and a complete version of the library can be found [here](https://lemon.cs.elte.hu/trac/lemon). A copyright notice is included [here](fair_kmeans/lemon/LICENSE).
 
+You can try Fair K-Means out on our [Clustering Toolkit](https://clustering-toolkit.algo.hhu.de/K-Means_Clustering)!
+
 ### References
 
 [1] Flavio Chierichetti, Ravi Kumar, Silvio Lattanzi, and Sergei Vassilvitskii, Fair clustering through fairlets, Proceedings of the 30th Annual Conference on Neural Information Processing Systems (NIPS), 2017, pp. 5036–5044.
