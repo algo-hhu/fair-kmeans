@@ -10,9 +10,11 @@ from sklearn.utils._openmp_helpers import _openmp_effective_n_threads
 from sklearn.utils._param_validation import Interval, StrOptions
 from sklearn.utils.extmath import row_norms
 from sklearn.utils.validation import (
+    _check_feature_names,
     _check_sample_weight,
     check_is_fitted,
     check_random_state,
+    validate_data,
 )
 
 import fair_kmeans._core  # type: ignore
@@ -81,7 +83,8 @@ class FairKMeans(KMeans):
         )
 
     def _check_X(self, X: Sequence[Sequence[float]]) -> Any:
-        _X = self._validate_data(
+        _X = validate_data(
+            self,
             X,
             accept_sparse="csr",
             dtype=[np.float64],
@@ -131,7 +134,7 @@ class FairKMeans(KMeans):
                 "For now, FairKMeans only supports integer weights greater than 1."
             )
 
-        return _check_sample_weight(sample_weight, X, only_non_negative=True)
+        return _check_sample_weight(sample_weight, X, ensure_non_negative=True)
 
     def _run_fair_clustering(
         self,
@@ -215,7 +218,7 @@ class FairKMeans(KMeans):
         fast: bool = False,
     ) -> "FairKMeans":
         self._validate_params()
-        self._check_feature_names(X, reset=True)
+        _check_feature_names(self, X, reset=True)
 
         _X = self._check_X(X)
         _sample_weight = self._check_sample_weight_constraints(_X, sample_weight)
