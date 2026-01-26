@@ -1,6 +1,6 @@
 [![Build Status](https://github.com/algo-hhu/fair-kmeans/actions/workflows/mypy-flake-test.yml/badge.svg)](https://github.com/algo-hhu/fair-kmeans/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Supported Python version](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/release/python-390/)
+[![Supported Python version](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/release/python-3100/)
 [![Stable Version](https://img.shields.io/pypi/v/fair-kmeans?label=stable)](https://pypi.org/project/fair-kmeans/)
 
 # Fair K-Means
