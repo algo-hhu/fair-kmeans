@@ -120,7 +120,7 @@ class FairKMeans(KMeans):
                 "That means that in the colors array only zeros and ones are allowed."
             )
 
-        return np.array(color, dtype=np.int32, order="C", copy=False)
+        return np.asarray(color, dtype=np.int32, order="C")
 
     def _check_sample_weight_constraints(
         self, X: Sequence[Sequence[float]], sample_weight: Optional[Sequence[int]]
